@@ -1,27 +1,33 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using WebApplication1.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Models;
 
-namespace WebApplication1.Controllers
+namespace Lekcja8.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class AnimalsController : ControllerBase
     {
-        public List<Animal> database = new List<Animal>();
+        private List<Animal> database = new List<Animal>();
         public AnimalsController()
         {
-            Animal a1 = new Animal { Id = 1, Name = "Rex", category = "pies", color = "brown", mass = 12 };
+            Animal a1 = new Animal { Id = 1, Name = "Rex", category = "Pies", color = "Brown", mass = 12 };
+            database.Add(a1);
         }
+
+        //GET /animals
         [HttpGet]
-        public IActionResult GetAnimlas()
+        public IActionResult GetAnimals()
         {
             return Ok(database);
         }
+
+        //GET animals/1
         [HttpGet("{id}")]
         public IActionResult GetAnimal(int id)
         {
-            return Ok("bbb");
+            return Ok("bbbb");
         }
     }
 }
